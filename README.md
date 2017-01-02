@@ -50,3 +50,5 @@ def generate_icons(request, sizes=[16,32,48,64]):
 - [https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
 9. [https://mathiasbynens.be/notes/touch-icons](https://mathiasbynens.be/notes/touch-icons)
 10. [https://html.spec.whatwg.org/multipage/semantics.html#rel-icon](https://html.spec.whatwg.org/multipage/semantics.html#rel-icon)
+11. [http://www.imagemagick.org/Usage/thumbnails/#favicon](http://www.imagemagick.org/Usage/thumbnails/#favicon)
+12. [http://www.imagemagick.org/script/command-line-processing.php](http://www.imagemagick.org/script/command-line-processing.php)
