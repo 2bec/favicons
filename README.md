@@ -1,5 +1,5 @@
 # favicons
-## Introducação
+## Introdução
 Os favicons não são mais como antes (uns 10 anos atrás), onde bastava um arquivo .ico de 16x16. 
 Agora existem diferentes usos, variados tamanhos e diferentes designs. Um exemplo é o Apple Touch Icon para iOS que é usado quando o visitante acrescenta o site na tela de ínicio. O Android e Windows seguem a mesma idéia mas cada um a sua maneira.
 
