@@ -15,7 +15,7 @@ Resumindo, não foi apenas gerar/criar imagens mas sim aprender muita coisa nova
 Definidos os tamanhos que precisamos (cada negócio pode priorizar um ou outro formato e tamanho) podemos gerar as imagens do ícones. Segui com a premissa de que a imagem do ícone seria enviada via POST através de um formulário no site.
 
 ### Tamanhos
-Windows ícones ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
+Windows ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
 Chrome e Opera ícones devem ser base 48px, por exemplo: 48px, 96px, 144px. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
 iOS Human Interface [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
 ```
