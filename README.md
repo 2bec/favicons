@@ -15,19 +15,28 @@ Resumindo, não foi apenas gerar/criar imagens mas sim aprender muita coisa nova
 Definidos os tamanhos que precisamos (cada negócio pode priorizar um ou outro formato e tamanho) podemos gerar as imagens do ícones. Segui com a premissa de que a imagem do ícone seria enviada via POST através de um formulário no site.
 
 ## Tamanhos
+Windows ícones ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
+Chrome e Opera ícones devem ser base 48px, por exemplo: 48px, 96px, 144px. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
+iOS Human Interface [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
 ```
 ICO_SIZES = [16, 32, 48, 64]
-PNG_SIZES = [32, 56, 57, 76, 87, 96, 120, 128, 152, 180, 195, 196, 228]
-WINDOWS_PNG_SIZES = [144, 270, (558, 270), 558]
+PNG_SIZES = [32, 48, 56, 58, 76, 87, 96, 120, 128, 144, 152, 167, 180, 192, 195, 196, 228]
+WINDOWS_PNG_SIZES = [128, 270, (558, 270), 558]
 FILEED_PNG_SIZES = [128, ] 
 ```
 
 ## convert - ImageMagick
+Gerando a imagem do ícone de qualquer arquivo png ou jpg (jpeg), precisamos indicar a transparência do background, o tamanho que queremos e o arquivo de destino, onde a imagem do ícone será armazenada.
 ```
-convert $post_image -background transparent -clone 0 -size $sizex$size -delete 0 favicon-$sizex$size.$suffix 
+def generate_icons(request, sizes=[16,32,48,64]):
+   if request.method == 'POST':
+      upload_file = request.FILES['imagem']
+
+      for s in sizes:
+         size = '%sx%s' % (s,s)
+         temp_file = NamedTemporaryFile(delete=False)
+         os.system('convert %s -background transparent -clone 0 -size %s -delete 0 %s' % (upload_file,size,temp_file.name))
 ```
-
-
 
 # Referências
 1. [https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
@@ -40,4 +49,4 @@ convert $post_image -background transparent -clone 0 -size $sizex$size -delete 0
 8. [http://www.w3.org/TR/appmanifest/](http://www.w3.org/TR/appmanifest/)
 - [https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
 9. [https://mathiasbynens.be/notes/touch-icons](https://mathiasbynens.be/notes/touch-icons)
-- [https://html.spec.whatwg.org/multipage/semantics.html#rel-icon](https://html.spec.whatwg.org/multipage/semantics.html#rel-icon)
+10. [https://html.spec.whatwg.org/multipage/semantics.html#rel-icon](https://html.spec.whatwg.org/multipage/semantics.html#rel-icon)
