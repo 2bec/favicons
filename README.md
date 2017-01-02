@@ -11,10 +11,10 @@ O Chrome para Android também veio com um ``` manifest ``` só que não em xml m
 
 Resumindo, não foi apenas gerar/criar imagens mas sim aprender muita coisa nova.
 
-# Desenvolvimento
+## Desenvolvimento
 Definidos os tamanhos que precisamos (cada negócio pode priorizar um ou outro formato e tamanho) podemos gerar as imagens do ícones. Segui com a premissa de que a imagem do ícone seria enviada via POST através de um formulário no site.
 
-## Tamanhos
+### Tamanhos
 Windows ícones ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
 Chrome e Opera ícones devem ser base 48px, por exemplo: 48px, 96px, 144px. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
 iOS Human Interface [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
@@ -25,7 +25,7 @@ WINDOWS_PNG_SIZES = [128, 270, (558, 270), 558]
 FILEED_PNG_SIZES = [128, ] 
 ```
 
-## convert - ImageMagick
+### convert - ImageMagick
 Gerando a imagem do ícone de qualquer arquivo png ou jpg (jpeg), precisamos indicar a transparência do background, o tamanho que queremos e o arquivo de destino, onde a imagem do ícone será armazenada.
 ```
 def generate_icons(request, sizes=[16,32,48,64]):
@@ -38,7 +38,7 @@ def generate_icons(request, sizes=[16,32,48,64]):
          os.system('convert %s -background transparent -clone 0 -size %s -delete 0 %s' % (upload_file,size,temp_file.name))
 ```
 
-# Referências
+## Referências
 1. [https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
 2. [https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android](https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android)
 3. [https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
