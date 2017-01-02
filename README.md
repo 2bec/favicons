@@ -5,7 +5,7 @@ Agora existem diferentes usos, variados tamanhos e diferentes designs. Um exempl
 
 Hoje precisamos gerar muitas imagens e inserir muitas metatags, cada uma para um dispositivo diferente e para cada sistema diferente, seja iOS, Android, Windows.
 
-E não são somente muitas imagens, também temos os arquivos de configuração, a Microsoft com o ``` browserconfig.xml ```, cujo o propósito  o de criar "live tiles" dinamicamente no IE10/11 Metro/Tile [1](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx).
+E não são somente muitas imagens, também temos os arquivos de configuração, a Microsoft com o ``` ieconfig.xml ```, cujo o propósito é o de criar "live tiles" dinamicamente no IE10/11 Metro/Tile [1](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx).
 
 O Chrome para Android também veio com um ``` manifest ``` só que não em xml mas sim em JSON.[2](https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android) e [3](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
 
