@@ -35,7 +35,7 @@ def generate_icons(request, sizes=[16,32,48,64]):
       for s in sizes:
          size = '%sx%s' % (s,s)
          temp_file = NamedTemporaryFile(delete=False)
-         os.system('convert %s -background transparent -clone 0 -size %s -delete 0 %s' % (upload_file,size,temp_file.name))
+         os.system('convert %s -background transparent -clone 0 -resize %s -delete 0 %s' % (upload_file,size,temp_file.name))
 ```
 
 ## Referências
