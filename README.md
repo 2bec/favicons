@@ -52,3 +52,4 @@ def generate_icons(request, sizes=[16,32,48,64]):
 10. [https://html.spec.whatwg.org/multipage/semantics.html#rel-icon](https://html.spec.whatwg.org/multipage/semantics.html#rel-icon)
 11. [http://www.imagemagick.org/Usage/thumbnails/#favicon](http://www.imagemagick.org/Usage/thumbnails/#favicon)
 12. [http://www.imagemagick.org/script/command-line-processing.php](http://www.imagemagick.org/script/command-line-processing.php)
+13. [http://docs.wand-py.org/en/0.4.1/wand/image.html#wand.image.Image](http://docs.wand-py.org/en/0.4.1/wand/image.html#wand.image.Image)
