@@ -54,3 +54,4 @@ def generate_icons(request, sizes=[16,32,48,64]):
 12. [http://www.imagemagick.org/script/command-line-processing.php](http://www.imagemagick.org/script/command-line-processing.php)
 13. [http://docs.wand-py.org/en/0.4.1/wand/image.html#wand.image.Image](http://docs.wand-py.org/en/0.4.1/wand/image.html#wand.image.Image)
 14. [http://docs.wand-py.org/en/0.4.1/guide/read.html#hint-file-format](http://docs.wand-py.org/en/0.4.1/guide/read.html#hint-file-format)
+15. [https://w3c.github.io/manifest/](https://w3c.github.io/manifest/)
