@@ -26,13 +26,13 @@ Chrome e Opera ícones devem ser base 48px. [[4]](https://developers.google.com/
  PNG_SIZES = [48, 96, 144, 192]
  ```
 iOS Human Interface. [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
-|Device or context |Icon size|
-|---|---|
-|iPhone 6s Plus, iPhone 6 Plus | 180px by 180px|
-|iPhone 6s, iPhone 6, iPhone SE | 120px by 120px|
-|iPad Pro | 167px by 167px|
-|iPad, iPad mini | 152px by 152px|
-|App Store | 1024px by 1024px|
+| Device or context | Icon size |
+| ---|--- |
+| iPhone 6s Plus, iPhone 6 Plus | 180px by 180px |
+| iPhone 6s, iPhone 6, iPhone SE | 120px by 120px |
+| iPad Pro | 167px by 167px |
+| iPad, iPad mini | 152px by 152px |
+| App Store | 1024px by 1024px |
 
 Browser customization. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
 Manifest. [[7]](https://developer.mozilla.org/en-US/docs/Web/Manifest)
