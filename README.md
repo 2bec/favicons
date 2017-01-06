@@ -1,42 +1,93 @@
-# favicons
+# favicons-icons
 ## Introdução
-Os favicons não são mais como antes (uns 10 anos atrás), onde bastava um arquivo .ico de 16x16. 
-Agora existem diferentes usos, variados tamanhos e diferentes designs. Um exemplo é o Apple Touch Icon para iOS que é usado quando o visitante acrescenta o site na tela de ínicio. O Android e Windows seguem a mesma idéia mas cada um a sua maneira.
-
 Hoje precisamos gerar muitas imagens e inserir muitas metatags, cada uma para um dispositivo diferente e para cada sistema diferente, seja iOS, Android, Windows.
 
-E não são somente muitas imagens, também temos os arquivos de configuração, a Microsoft com o ``` ieconfig.xml ```, cujo o propósito é o de criar "live tiles" dinamicamente no IE10/11 Metro/Tile. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
+E não são somente muitas imagens, também temos os arquivos de configuração, a Microsoft com o ``` ieconfig.xml ```, cujo o propósito é o de criar "live tiles" dinamicamente no IE10/11 Metro/Tile. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx) e o Chrome para Android com o ``` manifest.json ``` só que não em xml mas sim em JSON. [[2]](https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android) [[3]](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
 
-O Chrome para Android também veio com um ``` manifest ``` só que não em xml mas sim em JSON. [[2]](https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android) [[3]](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
-
-Resumindo, não foi apenas gerar/criar imagens mas sim aprender muita coisa nova.
+A tarefa não foi apenas gerar/criar imagens mas sim aprender muita coisa nova e automatizar esse processo para a plataforma existente.
 
 ## Desenvolvimento
-Definidos os tamanhos que precisamos (cada negócio pode priorizar um ou outro formato e tamanho) podemos gerar as imagens do ícones. Segui com a premissa de que a imagem do ícone seria enviada via POST através de um formulário no site.
+Precisamos definir quais dispositivos queremos atingir, cada negócio pode priorizar um ou outro (como somente para iPhone Retina iOS6+ ou qualquer Smarthphones mas não Tablets), depois geramos as imagens do ícones. Segui com a premissa de que a imagem do ícone seria enviada via POST (por ajax) através de um formulário no site.
 
 ### Tamanhos
-Windows ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
-Chrome e Opera ícones devem ser base 48px, por exemplo: 48px, 96px, 144px. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
-iOS Human Interface [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
+Utilizei uma lista de tuplas para definir, facilitando qualquer mudança em largura e altura futuramente.
+
+Favicons. [[16]](https://www.w3.org/2005/10/howto-favicon) [[17]](https://en.wikipedia.org/wiki/Favicon)
+Um arquivo com auto-resize ` -define icon:auto-resize=16,32,48,56,64 `. [[12]](http://www.imagemagick.org/script/command-line-options.php#define)
 ```
-ICO_SIZES = [16, 32, 48, 64]
-PNG_SIZES = [32, 48, 56, 58, 76, 87, 96, 120, 128, 144, 152, 167, 180, 192, 195, 196, 228]
-WINDOWS_PNG_SIZES = [128, 270, (558, 270), 558]
-FILEED_PNG_SIZES = [128, ] 
+ICO_SIZES = [(16, 16), (32, 32), (48, 48), (56, 56), (64, 64)]
+```
+Windows ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
+```
+WINDOWS_PNG_SIZES = [(128, 128), (270, 270), (558, 270), (558, 558)]
+```
+Chrome e Opera ícones devem ser base 48px. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
+```
+ PNG_SIZES = [48, 96, 144, 192]
+ ```
+iOS Human Interface. [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
+|Device or context |Icon size|
+|------------------|---------|
+|iPhone 6s Plus, iPhone 6 Plus | 180px by 180px|
+|iPhone 6s, iPhone 6, iPhone SE | 120px by 120px|
+|iPad Pro | 167px by 167px|
+|iPad, iPad mini | 152px by 152px|
+|App Store | 1024px by 1024px|
+
+Browser customization. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
+Manifest. [[7]](https://developer.mozilla.org/en-US/docs/Web/Manifest)
+```
+PNG_SIZES = [
+    (32, 32),
+    (48, 48),
+    (56, 56),
+    (58, 58),
+    (76, 76),
+    (87, 87),
+    (96, 96),
+    (120, 120),
+    (128, 128),
+    (144, 144),
+    (152, 152),
+    (167, 167),
+    (180, 180),
+    (192, 192),
+    (195, 195),
+    (196, 196),
+    (228, 228)
+]
+```
+Mathias Bynens. [[9]](https://mathiasbynens.be/notes/touch-icons)
+```
+COMPRESED_PNG_SIZES = [
+    (72, 72),
+    (76, 76),
+    (114, 114),
+    (120, 120),
+    (128, 128),
+    (144, 144),
+    (152, 152),
+    (180, 180),
+    (192, 192)
+] 
 ```
 
 ### convert - ImageMagick
-Gerando a imagem do ícone de qualquer arquivo png ou jpg (jpeg), precisamos indicar a transparência do background, o tamanho que queremos e o arquivo de destino, onde a imagem do ícone será armazenada.
-```
-def generate_icons(request, sizes=[16,32,48,64]):
-   if request.method == 'POST':
-      upload_file = request.FILES['imagem']
+Podemos gerar a imagem do ícone de qualquer arquivo png, jpg, jpeg, ico ou svg, precisamos indicar a cor do background, indicar transparência, indicar o tamanho que queremos e o arquivo de destino. [[11]](http://www.imagemagick.org/Usage/thumbnails/#favicon) [[12]](http://www.imagemagick.org/script/command-line-processing.php) 
 
-      for s in sizes:
-         size = '%sx%s' % (s,s)
-         temp_file = NamedTemporaryFile(delete=False)
-         os.system('convert %s -background transparent -clone 0 -resize %s -delete 0 %s' % (upload_file,size,temp_file.name))
+Para forçarmos a inclusão de um fundo em uma imagem de input com fundo transparente.  [[18]](http://www.imagemagick.org/script/command-line-options.php#flatten)
 ```
+size = '%sx%s' % (s,s)
+temp_file = NamedTemporaryFile(delete=False)
+
+# Transparência
+os.system('convert %s -background transparent -clone 0 -resize %s -delete 0 %s' % (upload_file,size,temp_file.name))
+
+# Background com cor branca
+os.system('convert %s -background white -flatten -clone 0 -resize %s -delete 0 %s' % (upload_file,size,temp_file.name))
+```
+
+### Metatags HTML
 
 ## Referências
 1. [https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
@@ -55,3 +106,6 @@ def generate_icons(request, sizes=[16,32,48,64]):
 13. [http://docs.wand-py.org/en/0.4.1/wand/image.html#wand.image.Image](http://docs.wand-py.org/en/0.4.1/wand/image.html#wand.image.Image)
 14. [http://docs.wand-py.org/en/0.4.1/guide/read.html#hint-file-format](http://docs.wand-py.org/en/0.4.1/guide/read.html#hint-file-format)
 15. [https://w3c.github.io/manifest/](https://w3c.github.io/manifest/)
+16. [https://www.w3.org/2005/10/howto-favicon](https://www.w3.org/2005/10/howto-favicon)
+17. [https://en.wikipedia.org/wiki/Favicon](https://en.wikipedia.org/wiki/Favicon)
+18. [http://www.imagemagick.org/script/command-line-options.php#flatten](http://www.imagemagick.org/script/command-line-options.php#flatten)
