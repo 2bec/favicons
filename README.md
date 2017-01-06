@@ -15,6 +15,13 @@ Utilizei uma lista de tuplas para definir, facilitando qualquer mudança em larg
 Favicons. [[16]](https://www.w3.org/2005/10/howto-favicon) [[17]](https://en.wikipedia.org/wiki/Favicon)
 Um arquivo com auto-resize ` -define icon:auto-resize=16,32,48,56,64 `. [[12]](http://www.imagemagick.org/script/command-line-options.php#define)
 ```
+sizes = [16,32,48,56,64]
+temp_file = NamedTemporaryFile(delete=False)
+
+# -define icon:auto-resize=
+os.system('convert %s -background transparent -clone 0 -define icon:auto-resize=%s -delete 0 %s' % (upload_file,sizes,temp_file.name))
+```
+```
 ICO_SIZES = [(16, 16), (32, 32), (48, 48), (56, 56), (64, 64)]
 ```
 Windows ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
@@ -26,6 +33,7 @@ Chrome e Opera ícones devem ser base 48px. [[4]](https://developers.google.com/
  PNG_SIZES = [48, 96, 144, 192]
  ```
 iOS Human Interface. [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
+
 | Device or context | Icon size |
 | ---|--- |
 | iPhone 6s Plus, iPhone 6 Plus | 180px by 180px |
