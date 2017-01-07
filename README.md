@@ -56,6 +56,7 @@ iOS Human Interface. [[8]](https://developer.apple.com/ios/human-interface-guide
 Browser customization. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
 Manifest, depth ser ignorado se inserido no arquivo. [[7]](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 
+### Configuraço final
 Nossa configuraço final dos ícones ficou com os seguintes tamanhos em png:
 ```
 PNG_SIZES = [
@@ -80,7 +81,9 @@ PNG_SIZES = [
     (228, 228)
 ]
 ```
-Mathias Bynens. [[9]](https://mathiasbynens.be/notes/touch-icons)
+
+### Compresed
+Para iOS touch, iphone, ipad, ipod. Mathias Bynens. [[9]](https://mathiasbynens.be/notes/touch-icons)
 ```
 COMPRESED_PNG_SIZES = [
     (72, 72),
@@ -95,10 +98,11 @@ COMPRESED_PNG_SIZES = [
 ] 
 ```
 
-### convert - ImageMagick
-Podemos gerar a imagem do ícone de qualquer arquivo png, jpg, jpeg, ico ou svg, precisamos indicar a cor do background, indicar transparência, indicar o tamanho que queremos e o arquivo de destino. [[11]](http://www.imagemagick.org/Usage/thumbnails/#favicon) [[12]](http://www.imagemagick.org/script/command-line-processing.php) 
+### convert com ImageMagick
+Podemos gerar a imagem do ícone de qualquer arquivo input: `png`, `jpg`, `jpeg`, `ico` ou `svg`, precisamos indicar a cor do background, indicar transparência, indicar o tamanho que queremos e o arquivo de destino. [[11]](http://www.imagemagick.org/Usage/thumbnails/#favicon) [[12]](http://www.imagemagick.org/script/command-line-processing.php) 
 
-Para forçarmos a inclusão de um fundo em uma imagem de input com fundo transparente.  [[18]](http://www.imagemagick.org/script/command-line-options.php#flatten)
+Usamos `flatten` para forçarmos a inclusão de um fundo em uma imagem de input com fundo transparente.  [[18]](http://www.imagemagick.org/script/command-line-options.php#flatten)
+
 ```
 size = '%sx%s' % (s,s)
 temp_file = NamedTemporaryFile(delete=False)
@@ -111,7 +115,8 @@ os.system('convert %s -background white -flatten -clone 0 -resize %s -delete 0 %
 ```
 
 ### Metatags HTML
-Até o momento (01/2017) nenhum browser suporta as tags `theme-color` e `background-color`. Apenas no mobile o Android Webview, Opera mobile e Chrome para Android. Para o IE, Safari e Firefox não encontrei documentação.
+Até o momento (01/2017) nenhum browser suporta as tags `theme-color` e `background-color`. Apenas no mobile o Android Webview, Opera mobile e Chrome para Android. Para o IE, Safari e Firefox só testando, em todos os dispositivos e versões.
+
 ```
 <!-- icon in the highest resolution -->
 <link rel="icon" sizes="192x192" href="favicon.png">
