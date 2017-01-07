@@ -61,25 +61,25 @@ Manifest, depth ser ignorado se inserido no arquivo. [[7]](https://developer.moz
 Nossa configuraço final dos ícones em png ficou com os seguintes tamanhos:
 ```
 PNG_SIZES = [
-    (32, 32),
+    (32, 32), # Certain old but not too old Chrome versions mishandle ico
     (48, 48), # Chrome e Opera (Manifest)
-    (56, 56),
-    (58, 58),
+    (56, 56), # ?
+    (57, 57), # Standard iOS home screen (iPod Touch, iPhone first generation to 3G)
+    (58, 58), # ?
     (72, 72), # Manifest
     (76, 76), # Safari
-    (87, 87),
+    (87, 87), # ?
     (96, 96), # Chrome e Opera (Manifest)
     (120, 120), # Safari e iPhone 6s, iPhone 6, iPhone SE
-    (128, 128),
+    (128, 128), # Chrome
     (144, 144), # Chrome e Opera (Manifest)
     (152, 152), # Safari e iPad, iPad mini
     (168, 168), # Manifest
     (167, 167), # iPad Pro
     (180, 180), # iPhone 6s Plus, iPhone 6 Plus
     (192, 192), # Chrome e Opera (Manifest) - icon in the highest resolution we need it for
-    (195, 195),
-    (196, 196),
-    (228, 228)
+    (196, 196), # Chrome for Android home screen icon
+    (228, 228)  # Opera Coast icon
 ]
 ```
 
