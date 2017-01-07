@@ -106,7 +106,7 @@ Podemos gerar a imagem do ícone de qualquer arquivo input: `png`, `jpg`, `jpeg`
 Usamos `flatten` para forçarmos a inclusão de um fundo em uma imagem de input com fundo transparente.  [[18]](http://www.imagemagick.org/script/command-line-options.php#flatten)
 
 ```
-size = '%sx%s' % (s,s)
+size = '%sx%s' % (w,h)
 temp_file = NamedTemporaryFile(delete=False)
 
 # Transparência
