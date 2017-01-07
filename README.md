@@ -86,15 +86,16 @@ PNG_SIZES = [
 Para iOS touch, iphone, ipad, ipod. Mathias Bynens. [[9]](https://mathiasbynens.be/notes/touch-icons)
 ```
 COMPOSED_PNG_SIZES = [
-    (72, 72),
-    (76, 76),
-    (114, 114),
-    (120, 120),
-    (128, 128),
-    (144, 144),
-    (152, 152),
-    (180, 180),
-    (192, 192)
+    (57, 57), # non-Retina iPhone, iPod Touch, and Android 2.1+
+    (72, 72), # iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6
+    (76, 76), # Pad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7
+    (114, 114), # iPhone with @2× display running iOS ≤ 6
+    (120, 120), # iPhone with @2× display running iOS ≥ 7
+    (128, 128), # ?
+    (144, 144), # iPad with @2× display running iOS ≤ 6
+    (152, 152), # iPad with @2× display running iOS ≥ 7
+    (180, 180), # iPhone 6 Plus with @3× display
+    (192, 192)  # We need for it
 ] 
 ```
 
