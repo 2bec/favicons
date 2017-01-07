@@ -30,6 +30,7 @@ ICO_SIZES = [
     (64, 64)
 ]
 ```
+
 Windows ícones: pequeno, médio, wide, grande. [[1]](https://msdn.microsoft.com/library/dn455106(v=vs.85).aspx)
 ```
 WINDOWS_PNG_SIZES = [
@@ -39,10 +40,12 @@ WINDOWS_PNG_SIZES = [
     (558, 558)
  ]
 ```
+
 Chrome e Opera ícones devem ser base 48px. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
 ```
  PNG_SIZES = [48, 96, 144, 192]
  ```
+ 
 iOS Human Interface. [[8]](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
 
 | Device or context | Icon size |
@@ -51,13 +54,11 @@ iOS Human Interface. [[8]](https://developer.apple.com/ios/human-interface-guide
 | iPhone 6s, iPhone 6, iPhone SE | 120px by 120px |
 | iPad Pro | 167px by 167px |
 | iPad, iPad mini | 152px by 152px |
-| App Store | 1024px by 1024px |
 
 Browser customization. [[4]](https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/)
 Manifest, depth ser ignorado se inserido no arquivo. [[7]](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 
-### Configuraço final
-Nossa configuraço final dos ícones ficou com os seguintes tamanhos em png:
+Nossa configuraço final dos ícones em png ficou com os seguintes tamanhos:
 ```
 PNG_SIZES = [
     (32, 32),
