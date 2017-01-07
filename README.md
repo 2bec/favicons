@@ -12,8 +12,8 @@ Precisamos definir quais dispositivos queremos atingir, cada negócio pode prior
 ### Tamanhos
 Utilizei uma lista de tuplas para definir, facilitando qualquer mudança em largura e altura futuramente.
 
-Favicons. [[16]](https://www.w3.org/2005/10/howto-favicon) [[17]](https://en.wikipedia.org/wiki/Favicon)
-Um arquivo com auto-resize ` -define icon:auto-resize=16,32,48,56,64 `. [[12]](http://www.imagemagick.org/script/command-line-options.php#define)
+Veja mais sobre favicons nas referências: [[16]](https://www.w3.org/2005/10/howto-favicon) [[17]](https://en.wikipedia.org/wiki/Favicon)
+Criamos um arquivo favicon com auto-resize ` -define icon:auto-resize=16,32,48,56,64 `. [[12]](http://www.imagemagick.org/script/command-line-options.php#define)
 ```
 sizes = [16,32,48,56,64]
 temp_file = NamedTemporaryFile(delete=False)
@@ -82,10 +82,10 @@ PNG_SIZES = [
 ]
 ```
 
-### Compresed
+### Composed
 Para iOS touch, iphone, ipad, ipod. Mathias Bynens. [[9]](https://mathiasbynens.be/notes/touch-icons)
 ```
-COMPRESED_PNG_SIZES = [
+COMPOSED_PNG_SIZES = [
     (72, 72),
     (76, 76),
     (114, 114),
