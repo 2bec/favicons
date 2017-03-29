@@ -18,8 +18,7 @@ Criamos um arquivo favicon com auto-resize ` -define icon:auto-resize=16,32,48,5
 sizes = [16,32,48,56,64]
 temp_file = NamedTemporaryFile(delete=False)
 
-# -define icon:auto-resize=
-os.system('convert %s -background transparent -clone 0 -define icon:auto-resize=%s -delete 0 %s' % (upload_file,sizes,temp_file.name))
+# -define icon:auto-resize = os.system('convert %s -background transparent -clone 0 -define icon:auto-resize=%s -delete 0 %s' % (upload_file,sizes,temp_file.name))
 ```
 ```
 ICO_SIZES = [
